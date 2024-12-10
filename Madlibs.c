@@ -3,13 +3,11 @@
 //Madlibs 
 #include <stdio.h>
 #define CSIZE 100
-char* GetStoryLine(FILE* f, int index);
 void FillStory(char userInputs[100][100], int rows, int columns, char* fname);
 void madread(FILE* fp1, char userInputs[100][100]);
 void adj(int inputCount, int cols, char userInputs[100][100]);
 void verb(int inputCount, int cols, char userInputs[100][100]);
 void noun(int inputCount, int col, char userInputs[100][100]);
-
 
 int main(int argc, char** argv) {
     FILE* fptr = fopen(argv[1] , "r");
@@ -22,26 +20,11 @@ int main(int argc, char** argv) {
     fclose(fptr);
 
     FillStory(userInputs, 100, 100, argv[1]);
+
+    return 0;
 }
-
-
-char* GetStoryLine(FILE* f, int index) {
-    static char line[100];
-    int lineNum = 0;
-
-    while(fgets(line, sizeof(line), f)) {
-        if (lineNum % 2 == index % 2) {
-            return line;
-        }
-        lineNum++;
-    }
-    return NULL;
-}
-
 
 void FillStory(char userInputs[100][100], int rows, int columns, char* fname) {
-   
-   
     int nameint = 0;
     int inputCount = 0;
     int storyCount = 0;
@@ -71,7 +54,6 @@ void FillStory(char userInputs[100][100], int rows, int columns, char* fname) {
 
 
 void madread(FILE* fp1, char userInputs[100][100]) {
-//initialize loop variables
     int nameint;
     int inputCount = 0;
     char temp[CSIZE][CSIZE];
